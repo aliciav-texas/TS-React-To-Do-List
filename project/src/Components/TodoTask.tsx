@@ -3,13 +3,24 @@ import { ITask } from "../Interfaces";
 
 interface Props {
   task: ITask;
+  completeTask(taskNameToDelete: string): void;
 }
 
-const TodoTask = ({ task }: Props) => {
+const TodoTask = ({ task, completeTask }: Props) => {
   return (
-    <h1>
-      {task.taskName} {task.deadline}{" "}
-    </h1>
+    <div className="task">
+      <div className="content">
+        <span>{task.taskName}</span>
+        <span>{task.deadline}</span>
+      </div>
+      <button
+        onClick={() => {
+          completeTask(task.taskName);
+        }}
+      >
+        X
+      </button>
+    </div>
   );
 };
 
